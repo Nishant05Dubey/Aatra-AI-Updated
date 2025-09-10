@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quick Test - Social Simulation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a1a; color: white; }
+        .post { background: #2a2a2a; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        button { background: #4a90e2; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #357abd; }
+        .red { background: #e74c3c; }
+        .green { background: #27ae60; }
+        .yellow { background: #f39c12; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Social Simulation Test</h1>
+    <p>Testing user profile and reporting features...</p>
+    
+    <div id="testResults"></div>
+    
+    <script>
+        // Simulate the global variables from main app
+        let userProfiles = new Map();
+        let postCounter = 0;
+        
+        // Test user data
+        const testUserInfo = {
+            username: "@testuser",
+            realName: "Rahul Sharma",
+            platform: "twitter",
+            networkProvider: "Jio",
+            location: {
+                city: "Mumbai",
+                state: "Maharashtra",
+                coordinates: { lat: 19.0760, lon: 72.8777 },
+                address: "123, MG Road, Sector 21, Mumbai, Maharashtra"
+            },
+            connection: {
+                ipAddress: "103.21.58.142",
+                isp: "Jio Networks Limited",
+                connectionType: "4G",
+                signalStrength: "85%"
+            },
+            device: {
+                type: "Mobile",
+                os: "Android",
+                browser: "Chrome",
+                userAgent: "Mozilla/5.0 (Linux; Android 12) AppleWebKit/537.36"
+            },
+            accountInfo: {
+                joinDate: new Date("2020-05-15"),
+                followers: 1250,
+                following: 450,
+                posts: 3400,
+                verified: false
+            },
+            riskProfile: {
+                suspiciousActivity: true,
+                multipleAccounts: false,
+                vpnUsage: false,
+                botLikeBehavior: true
+            }
+        };
+        
+        // Store test user
+        const testPostId = "post_test_1";
+        userProfiles.set(testPostId, testUserInfo);
+        
+        // Test functions
+        function testUserProfile() {
+            console.log("Testing user profile lookup...");
+            const userInfo = userProfiles.get(testPostId);
+            if (userInfo) {
+                document.getElementById('testResults').innerHTML += `
+                    <div class="post">
+                        <h3>✅ User Profile Test PASSED</h3>
+                        <p>Username: ${userInfo.username}</p>
+                        <p>Real Name: ${userInfo.realName}</p>
+                        <p>Location: ${userInfo.location.city}, ${userInfo.location.state}</p>
+                        <p>IP: ${userInfo.connection.ipAddress}</p>
+                        <p>Network: ${userInfo.networkProvider}</p>
+                        <p>Risk: ${userInfo.riskProfile.suspiciousActivity ? 'HIGH RISK' : 'LOW RISK'}</p>
+                        <button onclick="showUserInfo('${userInfo.username}', userProfiles.get('${testPostId}'))">Show Full Profile</button>
+                    </div>
+                `;
+            } else {
+                document.getElementById('testResults').innerHTML += `
+                    <div class="post">
+                        <h3>❌ User Profile Test FAILED</h3>
+                        <p>Could not retrieve user info for post ID: ${testPostId}</p>
+                    </div>
+                `;
+            }
+        }
+        
+        function testReporting() {
+            console.log("Testing reporting functionality...");
+            document.getElementById('testResults').innerHTML += `
+                <div class="post">
+                    <h3>📋 Report Generation Test</h3>
+                    <button class="red" onclick="generateTestReport()">🚨 Generate Threat Report</button>
+                    <button class="yellow" onclick="testWatchlist()">👁️ Add to Watchlist</button>
+                    <div id="reportResult"></div>
+                </div>
+            `;
+        }
+        
+        function generateTestReport() {
+            const userInfo = userProfiles.get(testPostId);
+            const reportContent = `
+🚨 TEST REPORT - AATRA AI AICMS
+==============================
+
+SUSPECT: ${userInfo.realName} (${userInfo.username})
+LOCATION: ${userInfo.location.city}, ${userInfo.location.state}
+IP ADDRESS: ${userInfo.connection.ipAddress}
+NETWORK: ${userInfo.networkProvider}
+RISK LEVEL: ${userInfo.riskProfile.suspiciousActivity ? 'HIGH' : 'LOW'}
+
+This is a test report generated successfully!
+            `.trim();
+            
+            document.getElementById('reportResult').innerHTML = `
+                <div style="background: #2d5016; padding: 10px; margin: 10px 0; border-radius: 4px;">
+                    <p>✅ Report generated successfully!</p>
+                    <p>📋 Content would be copied to clipboard</p>
+                    <p>🌐 cybercrime.gov.in would open in new tab</p>
+                </div>
+            `;
+            console.log("Generated report:", reportContent);
+        }
+        
+        function testWatchlist() {
+            document.getElementById('reportResult').innerHTML = `
+                <div style="background: #2d4a16; padding: 10px; margin: 10px 0; border-radius: 4px;">
+                    <p>✅ User added to watchlist!</p>
+                    <p>👁️ Monitoring: ${testUserInfo.username}</p>
+                </div>
+            `;
+        }
+        
+        // Mock the main app's showUserInfo function
+        function showUserInfo(username, userInfo) {
+            document.getElementById('testResults').innerHTML += `
+                <div class="post" style="background: #1a3a5c;">
+                    <h3>🕵️ User Intelligence Profile: ${username}</h3>
+                    <p><strong>Real Name:</strong> ${userInfo.realName}</p>
+                    <p><strong>Platform:</strong> ${userInfo.platform}</p>
+                    <p><strong>Location:</strong> ${userInfo.location.city}, ${userInfo.location.state}</p>
+                    <p><strong>Address:</strong> ${userInfo.location.address}</p>
+                    <p><strong>IP Address:</strong> ${userInfo.connection.ipAddress}</p>
+                    <p><strong>Network Provider:</strong> ${userInfo.networkProvider}</p>
+                    <p><strong>Device:</strong> ${userInfo.device.type} (${userInfo.device.os})</p>
+                    <p><strong>Followers:</strong> ${userInfo.accountInfo.followers.toLocaleString()}</p>
+                    <p><strong>Risk Assessment:</strong> ${userInfo.riskProfile.suspiciousActivity ? '🚨 HIGH RISK - Suspicious Activity' : '✅ LOW RISK'}</p>
+                    ${userInfo.riskProfile.botLikeBehavior ? '<p style="color: #e74c3c;">🤖 Bot-like Behavior Detected</p>' : ''}
+                </div>
+            `;
+        }
+        
+        // Run tests
+        document.addEventListener('DOMContentLoaded', function() {
+            testUserProfile();
+            testReporting();
+        });
+    </script>
+</body>
+</html>

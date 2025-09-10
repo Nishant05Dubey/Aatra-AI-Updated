@@ -1,0 +1,23 @@
+INFO:     Will watch for changes in these directories: ['/home/hrsflex/Aatra-AI-Updated/backend']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [68196] using WatchFiles
+Redis not available: Error 111 connecting to localhost:6379. Connection refused., using in-memory fallback
+Tweepy not available - using mock data only
+INFO:app.ml.gemini_detector:✅ GeminiHateDetector initialized - Real API mode with key: AIzaSyB3Dmh8MGD8VmHu...
+INFO:     Started server process [68200]
+INFO:     Waiting for application startup.
+INFO:app.services.social_monitor:Starting social media monitoring...
+ERROR:app.services.social_monitor:Error saving threats to database: 'description' is an invalid keyword argument for ThreatDetection
+ERROR:app.services.social_monitor:Error updating platform analytics: 'NoneType' object has no attribute 'hset'
+INFO:     Application startup complete.
+✅ Using Gemini Flash AI detector - Advanced analysis enabled!
+INFO:     127.0.0.1:39650 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:39652 - "POST /api/analysis/url HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50980 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:44598 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:app.services.social_monitor:Social media monitoring stopped
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68200]
+INFO:     Stopping reloader process [68196]

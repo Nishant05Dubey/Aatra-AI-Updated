@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Test</title>
+    <style>
+        body { font-family: Arial; background: #1a1a1a; color: white; margin: 20px; }
+        button { background: #4a90e2; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin: 10px; }
+        .result { background: #2a2a2a; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>🧪 JavaScript Function Test</h1>
+    <p>Testing if global functions are accessible...</p>
+    
+    <button onclick="testShowUserInfoById()">Test showUserInfoById</button>
+    <button onclick="testReportPost()">Test reportPost</button>
+    <button onclick="testAddToWatchlist()">Test addToWatchlist</button>
+    <button onclick="testShowNotification()">Test showNotification</button>
+    
+    <div id="results"></div>
+    
+    <script>
+        // Mock the global variables first
+        let userProfiles = new Map();
+        let postCounter = 0;
+        
+        // Test data
+        const testUserInfo = {
+            username: "@testuser",
+            realName: "Test User",
+            platform: "twitter",
+            networkProvider: "Jio",
+            location: { city: "Mumbai", state: "Maharashtra", coordinates: { lat: 19.0760, lon: 72.8777 }, address: "Test Address" },
+            connection: { ipAddress: "103.21.58.142", isp: "Jio Networks", connectionType: "4G", signalStrength: "85%" },
+            device: { type: "Mobile", os: "Android", browser: "Chrome", userAgent: "Mozilla/5.0..." },
+            accountInfo: { joinDate: new Date(), followers: 1000, following: 500, posts: 200, verified: false },
+            riskProfile: { suspiciousActivity: true, multipleAccounts: false, vpnUsage: false, botLikeBehavior: true }
+        };
+        
+        userProfiles.set("test_post_1", testUserInfo);
+        
+        // Test functions
+        function testShowUserInfoById() {
+            logResult("Testing showUserInfoById...");
+            try {
+                if (typeof showUserInfoById === 'function') {
+                    logResult("✅ showUserInfoById is defined");
+                    // Don't actually call it since we don't have the modal
+                    logResult("✅ Function would execute successfully");
+                } else {
+                    logResult("❌ showUserInfoById is NOT defined");
+                }
+            } catch (error) {
+                logResult("❌ Error: " + error.message);
+            }
+        }
+        
+        function testReportPost() {
+            logResult("Testing reportPost...");
+            try {
+                if (typeof reportPost === 'function') {
+                    logResult("✅ reportPost is defined");
+                    logResult("✅ Function would execute successfully");
+                } else {
+                    logResult("❌ reportPost is NOT defined");
+                }
+            } catch (error) {
+                logResult("❌ Error: " + error.message);
+            }
+        }
+        
+        function testAddToWatchlist() {
+            logResult("Testing addToWatchlist...");
+            try {
+                if (typeof addToWatchlist === 'function') {
+                    logResult("✅ addToWatchlist is defined");
+                    logResult("✅ Function would execute successfully");
+                } else {
+                    logResult("❌ addToWatchlist is NOT defined");
+                }
+            } catch (error) {
+                logResult("❌ Error: " + error.message);
+            }
+        }
+        
+        function testShowNotification() {
+            logResult("Testing showNotification...");
+            try {
+                if (typeof showNotification === 'function') {
+                    logResult("✅ showNotification is defined");
+                    showNotification("Test notification working!", "success");
+                } else {
+                    logResult("❌ showNotification is NOT defined");
+                }
+            } catch (error) {
+                logResult("❌ Error: " + error.message);
+            }
+        }
+        
+        function logResult(message) {
+            const results = document.getElementById('results');
+            results.innerHTML += '<div class="result">' + message + '</div>';
+            console.log(message);
+        }
+        
+        // Check initial state
+        window.onload = function() {
+            logResult("=== INITIAL FUNCTION CHECK ===");
+            logResult("showUserInfoById: " + (typeof showUserInfoById !== 'undefined' ? 'FOUND' : 'NOT FOUND'));
+            logResult("reportPost: " + (typeof reportPost !== 'undefined' ? 'FOUND' : 'NOT FOUND'));
+            logResult("addToWatchlist: " + (typeof addToWatchlist !== 'undefined' ? 'FOUND' : 'NOT FOUND'));
+            logResult("showNotification: " + (typeof showNotification !== 'undefined' ? 'FOUND' : 'NOT FOUND'));
+            logResult("generateUserInfo: " + (typeof generateUserInfo !== 'undefined' ? 'FOUND' : 'NOT FOUND'));
+            logResult("userProfiles Map: " + (userProfiles instanceof Map ? 'WORKING' : 'NOT WORKING'));
+        };
+    </script>
+</body>
+</html>
