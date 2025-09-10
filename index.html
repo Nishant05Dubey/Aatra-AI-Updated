@@ -7,65 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            padding-top: 120px; /* Adjust for fixed header */
-        }
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .bg-gradient-custom {
-            background: linear-gradient(135deg, #1a1a3d 0%, #0c0c24 100%);
-        }
-        .text-glow {
-            text-shadow: 0 0 8px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.3);
-        }
-        .nav-link.active-link {
-            background-color: #3b82f6;
-            color: white;
-        }
-        .tab-btn.active-tab {
-            color: white;
-            border-bottom: 2px solid #3b82f6;
-        }
-        .loader {
-            width: 48px;
-            height: 48px;
-            border: 5px solid #FFF;
-            border-bottom-color: transparent;
-            border-radius: 50%;
-            display: inline-block;
-            box-sizing: border-box;
-            animation: rotation 1s linear infinite;
-        }
-
-        @keyframes rotation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(4px);
-        }
-        
-        .threat-item {
-            transition: all 0.3s ease;
-        }
-        
-        .threat-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="bg-gradient-custom text-gray-200">
 
@@ -424,7 +366,7 @@
         <span id="lastUpdate"></span>
     </footer>
 
-    <script>
+    <script type="text/plain" data-note="migrated-to-script.js">
         document.addEventListener('DOMContentLoaded', function() {
             // --- MOCK DATA ---
             const threatsData = [
@@ -839,5 +781,6 @@ Please investigate the above-mentioned threat and take appropriate action.
             setInterval(updateTime, 1000);
         });
     </script>
+    <script src="script.js" defer></script>
 </body>
 </html>
